@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import StartRating from "./StarRating";
+import StarRating from "./StarRating";
 import { useMovies } from "./useMovies";
 import { useLocalStorageState } from "./useLocalStorageState";
 import { useKey } from "./useKey";
@@ -190,13 +190,12 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
   useEffect(
     function () {
-      countRef.current = countRef.current + 1;
+      if (userRating) countRef.current++;
     },
     [userRating]
   );
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
-
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
@@ -214,7 +213,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
-  // const isTop = imdbRating > 8;
+  // if (imdbRating > 8) return <p>Greatest ever!</p>;
+  // if (imdbRating > 8) [isTop, setIsTop] = useState(true);
+
+  // const [isTop, setIsTop] = useState(imdbRating > 8);
+  // console.log(isTop);
+  // useEffect(
+  //   function () {
+  //     setIsTop(imdbRating > 8);
+  //   },
+  //   [imdbRating]
+  // );
+
+  const isTop = imdbRating > 8;
+  console.log(isTop);
 
   // const [avgRating, setAvgRating] = useState(0);
 
@@ -246,7 +258,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
         );
-
         const data = await res.json();
         setMovie(data);
         setIsLoading(false);
@@ -263,6 +274,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
       return function () {
         document.title = "usePopcorn";
+        // console.log(`Clean up effect for movie ${title}`);
       };
     },
     [title]
@@ -278,7 +290,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             <button className="btn-back" onClick={onCloseMovie}>
               &larr;
             </button>
-            <img src={poster} alt={`Poster of ${movie}`} movie />
+            <img src={poster} alt={`Poster of ${movie} movie`} />
             <div className="details-overview">
               <h2>{title}</h2>
               <p>
@@ -286,7 +298,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
               </p>
               <p>{genre}</p>
               <p>
-                <span>⭐</span>
+                <span>⭐️</span>
                 {imdbRating} IMDb rating
               </p>
             </div>
@@ -298,27 +310,27 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             <div className="rating">
               {!isWatched ? (
                 <>
-                  <StartRating
+                  <StarRating
                     maxRating={10}
                     size={24}
                     onSetRating={setUserRating}
                   />
                   {userRating > 0 && (
                     <button className="btn-add" onClick={handleAdd}>
-                      +Add to list
+                      + Add to list
                     </button>
                   )}
                 </>
               ) : (
                 <p>
-                  You rated this movie {watchedUserRating} <span>⭐</span>
+                  You rated with movie {watchedUserRating} <span>⭐️</span>
                 </p>
               )}
             </div>
             <p>
               <em>{plot}</em>
             </p>
-            <p>Staring {actors}</p>
+            <p>Starring {actors}</p>
             <p>Directed by {director}</p>
           </section>
         </>
