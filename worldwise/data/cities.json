@@ -35,6 +35,66 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Infantes",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-09-29T11:13:55.488Z",
+      "notes": "",
+      "position": {
+        "lat": "38.758216803129194",
+        "lng": "-3.0554602417737224"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Castejon del Puente",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-09-29T11:16:34.459Z",
+      "notes": "",
+      "position": {
+        "lat": "41.952107073407376",
+        "lng": "0.15262164673996104"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Castejon del Puente",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-09-29T11:16:34.459Z",
+      "notes": "",
+      "position": {
+        "lat": "41.952107073407376",
+        "lng": "0.15262164673996104"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Lagos",
+      "country": "Nigeria",
+      "emoji": "🇳🇬",
+      "date": "2023-09-29T11:17:51.917Z",
+      "notes": "",
+      "position": {
+        "lat": "6.557687411322283",
+        "lng": "3.1420898437500004"
+      },
+      "id": 98443203
+    },
+    {
+      "cityName": "Salsadella",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-09-29T12:16:24.486Z",
+      "notes": "TESTING",
+      "position": {
+        "lat": "40.39949365856096",
+        "lng": "0.12948964689875278"
+      },
+      "id": 98443204
     }
   ]
 }
